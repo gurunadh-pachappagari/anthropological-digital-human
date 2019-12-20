@@ -1,0 +1,7 @@
+show
+center 0 -50
+center 0 20
+center 0 2
+neck 2 5
+legs 2 50
+legs 2 10
