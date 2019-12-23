@@ -1,3 +1,6 @@
+from collections import OrderedDict
+dictionary = OrderedDict()
+
 centre_x = 0
 centre_y = 0
 centre_z = 0
@@ -33,35 +36,66 @@ arms_y_length = 39
 arms_z_length = 23
 
 
-face_centre = (centre_x, centre_y, centre_z,)
+face_centre = (centre_x, centre_y, centre_z, 2)
+dictionary['face_centre'] = face_centre
 
-ear_left = (centre_x+ear_dist_left, centre_y, centre_z)
-ear_right = (centre_x-ear_dist_right, centre_y, centre_z)
 
-face_top = (centre_x, centre_y + face_max_dist, centre_z)
-face_bottom = (centre_x, centre_y-face_min_dist, centre_z)
+ear_left = (centre_x-ear_dist_left, centre_y, centre_z, 0)
+ear_right = (centre_x+ear_dist_right, centre_y, centre_z, 0)
+dictionary['ear_left'] = ear_left
+dictionary['ear_right'] = ear_right
 
-neck_top = (centre_x-neck_x_length/2, centre_y-neck_y_length/2, centre_z)
-neck_bottom = (centre_x, centre_y)
 
-arms_left_top = ()
-arms_left_bottom = ()
+face_top = (centre_x, centre_y-face_max_dist, centre_z, 1)
+face_bottom = (centre_x, centre_y+face_min_dist, centre_z, 1)
+dictionary['face_top'] = face_top
+dictionary['face_bottom'] = face_bottom
 
-arms_right_top = ()
-arms_right_bottom = ()
 
-chest_top = ()
-chest_bottom = ()
+neck_top = (centre_x-neck_x_length/2, face_bottom[1]+neck_y_length/2, centre_z, 0)
+neck_bottom = (centre_x, face_bottom[1]+neck_y_length, centre_z, 1)
+dictionary['neck_top'] = neck_top
+dictionary['neck_bottom'] = neck_bottom
 
-stomach_top = ()
-stomach_bottom = ()
 
-hip_top = ()
-hip_bottom = ()
+chest_top = (centre_x-chest_x_length/2, neck_bottom[1]+chest_y_length/2, centre_z, 0)
+chest_bottom = (centre_x, neck_bottom[1]+chest_y_length, centre_z, 1)
+dictionary['chest_top'] = chest_top
+dictionary['chest_bottom'] = chest_bottom
 
-leg_left_top = ()
-leg_left_bottom = ()
 
-leg_right_top = ()
-leg_right_bottom = ()
+arms_left_top = (chest_top[0]-arms_x_length, neck_bottom[1]+arms_y_length/2, centre_z, 0)
+arms_left_bottom = (chest_top[0]-arms_x_length/2, neck_bottom[1]+arms_y_length, centre_z, 1)
+dictionary['arms_left_top'] = arms_left_top
+dictionary['arms_left_bottom'] = arms_left_bottom
+
+
+arms_right_top = (centre_x-(chest_top[0]-arms_x_length), neck_bottom[1]+arms_y_length/2, centre_z, 0)
+arms_right_bottom = (centre_x-(chest_top[0]-arms_x_length/2), neck_bottom[1]+arms_y_length, centre_z, 1)
+dictionary['arms_right_top'] = arms_right_top
+dictionary['arms_right_bottom'] = arms_right_bottom
+
+
+stomach_top = (centre_x-stomach_x_length/2, chest_bottom[1]+stomach_y_length/2, centre_z, 0)
+stomach_bottom = (centre_x, chest_bottom[1]+stomach_y_length, centre_z, 1)
+dictionary['stomach_top'] = stomach_top
+dictionary['stomach_bottom'] = stomach_bottom
+
+
+hip_top = (centre_x-hip_x_length/2, stomach_bottom[1]+hip_y_length/2, centre_z, 0)
+hip_bottom = (centre_x, stomach_bottom[1]+hip_y_length, centre_z, 1)
+dictionary['hip_top'] = hip_top
+dictionary['hip_bottom'] = hip_bottom
+
+
+leg_left_top = (hip_top[0]+leg_x_length, hip_bottom[1]+leg_y_length/2, centre_z, 0)
+leg_left_bottom = (hip_top[0]+leg_x_length/2, hip_bottom[1]+leg_y_length, centre_z, 1)
+dictionary['leg_left_top'] = leg_left_top
+dictionary['leg_left_bottom'] = leg_left_bottom
+
+
+leg_right_top = (centre_x-(hip_top[0]+leg_x_length), hip_bottom[1]+leg_y_length/2, centre_z, 0)
+leg_right_bottom = (centre_x-(hip_top[0]+leg_x_length/2), hip_bottom[1]+leg_y_length, centre_z, 1)
+dictionary['leg_right_top'] = leg_right_top
+dictionary['leg_right_bottom'] = leg_right_bottom
 
