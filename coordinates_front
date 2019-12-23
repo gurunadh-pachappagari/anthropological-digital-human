@@ -1,0 +1,67 @@
+centre_x = 0
+centre_y = 0
+centre_z = 0
+
+ear_dist_left = 22
+ear_dist_right = 22
+
+face_max_dist = 25
+face_min_dist = 25
+
+neck_y_length = 32
+neck_x_length = 23
+neck_z_length = 20
+
+chest_x_length = 98
+chest_y_length = 58
+chest_z_length = 42
+
+stomach_x_length = 84
+stomach_y_length = 53
+stomach_z_length = 44
+
+hip_x_length = 105
+hip_y_length = 42
+hip_z_length = 50
+
+leg_x_length = 40
+leg_y_length = 224
+leg_z_length = 30
+
+arms_x_length = 161
+arms_y_length = 39
+arms_z_length = 23
+
+
+face_centre = (centre_x, centre_y, centre_z,)
+
+ear_left = (centre_x+ear_dist_left, centre_y, centre_z)
+ear_right = (centre_x-ear_dist_right, centre_y, centre_z)
+
+face_top = (centre_x, centre_y + face_max_dist, centre_z)
+face_bottom = (centre_x, centre_y-face_min_dist, centre_z)
+
+neck_top = (centre_x-neck_x_length/2, centre_y-neck_y_length/2, centre_z)
+neck_bottom = (centre_x, centre_y)
+
+arms_left_top = ()
+arms_left_bottom = ()
+
+arms_right_top = ()
+arms_right_bottom = ()
+
+chest_top = ()
+chest_bottom = ()
+
+stomach_top = ()
+stomach_bottom = ()
+
+hip_top = ()
+hip_bottom = ()
+
+leg_left_top = ()
+leg_left_bottom = ()
+
+leg_right_top = ()
+leg_right_bottom = ()
+
