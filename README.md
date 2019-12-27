@@ -1,1 +1,1 @@
-Run the Window.py to get the output
+Run the window.py to get the output
