@@ -9,6 +9,8 @@ def face(front, side, top, center, lens):
 
     o1, o2, o3 = center
 
+    # All the views are assumed to be ellipses and are draw using given lengths
+    
     # front view
 
     cv2.ellipse(front, (o1, o2), (a1, b2), 0, 0, 90, 255, 1)
@@ -35,6 +37,8 @@ def neck(front, side, lens, center, face_lens):
 
     width, height, z = lens
 
+    # The neck always starts from a particular point in the face ellipse so first the intercept is found the it is draw upto given height
+    
     # front view
 
     tempx = center[0] - width//2
@@ -76,8 +80,11 @@ def neck(front, side, lens, center, face_lens):
 
 def torso(front, side, top, lens, center, pivot, o3, fendy, sendy):
 
+    # The Chest, Hip and Stomach are all appoximated with a rectangle so the all us the same function torso 
+    
     width, height, z = lens
-
+    
+    
     # front view
 
     pt1 = (center - width//2, fendy)
@@ -105,57 +112,12 @@ def torso(front, side, top, lens, center, pivot, o3, fendy, sendy):
 
     return fendy, sendy
 
-#
-# def stomach(front, side, lens, center, pivot, fendy, sendy):
-#     width, height, z = lens
-#
-#     # front view
-#
-#     pt1 = (center - width // 2, fendy)
-#     pt2 = (pt1[0] + width, pt1[1] + height)
-#
-#     cv2.rectangle(front, pt1, pt2, 255, 1)
-#
-#     fendy = pt2[1]
-#
-#     # side view
-#
-#     pt1 = (pivot, sendy)
-#     pt2 = (pivot - z, sendy + height)
-#
-#     cv2.rectangle(side, pt1, pt2, 255, 1)
-#
-#     sendy = pt2[1]
-#
-#     return fendy, sendy
-#
-#
-# def hip(front, side, lens, center, pivot, fendy, sendy):
-#     width, height, z = lens
-#
-#     # front view
-#
-#     pt1 = (center - width // 2, fendy)
-#     pt2 = (pt1[0] + width, pt1[1] + height)
-#
-#     cv2.rectangle(front, pt1, pt2, 255, 1)
-#
-#     fendy = pt2[1]
-#
-#     # side view
-#
-#     pt1 = (pivot, sendy)
-#     pt2 = (pivot - z, sendy + height)
-#
-#     cv2.rectangle(side, pt1, pt2, 255, 1)
-#
-#     sendy = pt2[1]
-#
-#     return fendy, sendy
-
 
 def legs(front, side, lens, center, pivot, fendy, sendy, hip_lens):
 
+    # legs is assumed to be a rectangle and is mirrored with respect to center by drawing only the left one.
+    # in side view only one is draw
+    
     width, height, z = lens
 
     pt1 = (center - hip_lens[0]//2, fendy)
@@ -182,6 +144,8 @@ def legs(front, side, lens, center, pivot, fendy, sendy, hip_lens):
 
 def arms(front, side, top, lens, center, pivot, o3, a, b, chest_lens):
 
+    # arms are drawn the same way as legs
+    
     # front view
 
     c_w = chest_lens[0]
