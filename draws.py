@@ -170,7 +170,7 @@ def arms(front, side, top, lens, center, pivot, o3, a, b, chest_lens):
     # top view
 
     pt1 = (center - c_w//2, o3 - c_z//2)
-    pt2 = (pt1[0] - width, pt1[1] - z)
+    pt2 = (pt1[0] - width, pt1[1] + z)
 
     cv2.rectangle(top, pt1, pt2, 255, 1)
 
