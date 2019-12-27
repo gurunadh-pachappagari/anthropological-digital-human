@@ -8,14 +8,14 @@ import pickle
 
 def run():
 
-    flag = True
-    hide = True
-    view = 1
+    flag = True # A bool to control the running of the program
+    hide = True # A bool to control superimposition of image
+    view = 1 # which view to be change with given commands, 1-Front, 2-Side, 3-Top
 
-    with open('side_len.p', 'rb') as fp:
+    with open('lengths.p', 'rb') as fp: # to load the template from the PC
         lens = pickle.load(fp)
 
-    img = outline('man_2.jpg')
+    img = outline('man_2.jpg') # outline is captured
     simg = outline('side.jpg')
 
     while flag:
@@ -28,11 +28,14 @@ def run():
 
         top = np.zeros((480, 480))
 
-        display(front, side, top, lens)
+        display(front, side, top, lens) # to show the templates
 
-        flag, hide, view = controller(lens, flag, hide, view)
+        flag, hide, view = controller(lens, flag, hide, view) # A user interface to get inputs
 
 
+
+# The diplay function displays the template part by part. A 2 second delay is given from stable output.
+        
 def display(front, side, top, lens):
 
     center = lens['center']
@@ -59,7 +62,3 @@ def display(front, side, top, lens):
 
 run()
 
-# nodes = np.array([[240, 11], [213, 43], [240, 69], [262, 45],
-#                  [224, 76], [180, 85], [190, 154], [192, 202],
-#                  [192, 249], [228, 453],
-#                  [50, 112]])  # hands
